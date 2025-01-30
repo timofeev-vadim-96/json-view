@@ -20,6 +20,7 @@ import ru.javacode.jsonview.service.UserService;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -95,6 +96,7 @@ class UserControllerTest {
         assertThat(users).usingRecursiveComparison()
                 .ignoringFields("orders")
                 .isEqualTo(List.of(user));
+        assertNull(users.get(0).getOrders());
     }
 
     @Test
@@ -113,6 +115,7 @@ class UserControllerTest {
         assertThat(responseBody).usingRecursiveComparison()
                 .ignoringFields("orders")
                 .isEqualTo(user);
+        assertNull(user.getOrders());
     }
 
     @Test
@@ -131,6 +134,7 @@ class UserControllerTest {
         assertThat(responseBody).usingRecursiveComparison()
                 .ignoringFields("orders")
                 .isEqualTo(user);
+        assertNull(user.getOrders());
     }
 
     @Test
