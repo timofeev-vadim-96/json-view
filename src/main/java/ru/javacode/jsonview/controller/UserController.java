@@ -28,7 +28,6 @@ public class UserController {
     @JsonView(Views.UserDetails.class)
     public ResponseEntity<User> get(@PathVariable(name = "id") long id) {
         User user = userService.getById(id);
-        System.out.println(user.getOrders());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
